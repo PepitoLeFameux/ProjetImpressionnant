@@ -1,0 +1,35 @@
+{
+  "name": "projet_impressionnant",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "xo": {
+    "space": 2,
+    "prettier": true,
+    "rules": {
+      "unicorn/no-fn-reference-in-iterator": 0,
+      "unicorn/no-array-callback-reference": 0,
+      "unicorn/no-array-method-this-argument": 0,
+      "unicorn/no-array-reduce": 0,
+      "unicorn/no-array-for-each": 0
+    },
+    "envs": [
+      "mocha"
+    ]
+  },
+  "prettier": {
+    "bracketSpacing": false,
+    "singleQuote": true,
+    "trailingComma": "none"
+  },
+  "dependencies": {
+    "xo": "^0.58.0"
+  }
+}
