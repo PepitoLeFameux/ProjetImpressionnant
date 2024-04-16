@@ -30,6 +30,10 @@
     "trailingComma": "none"
   },
   "dependencies": {
+    "@rapideditor/country-coder": "^5.2.2",
+    "@turf/turf": "^6.5.0",
+    "csv-parser": "^3.0.0",
+    "ramda": "^0.29.1",
     "xo": "^0.58.0"
   }
 }
