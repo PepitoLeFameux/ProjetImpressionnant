@@ -2,7 +2,7 @@ import * as R from 'ramda'
 import csv from 'csv-parser'
 import * as fs from 'fs'
 import {iso1A2Code} from '@rapideditor/country-coder'
-import {getCountryName} from "./iso1a2toname.js"
+import {getCountryName} from "./scripts/iso1a2toname.js"
 
 function parseCsv(filepath) {
     return new Promise( (resolve, reject) => {

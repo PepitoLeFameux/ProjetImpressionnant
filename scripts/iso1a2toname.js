@@ -1,3 +1,5 @@
+// Une fonction pour obtenir le nom d'un pays en fonction de son code ISO1A2 à deux caractères
+
 var isoCountries = {
     'AF' : 'Afghanistan',
     'AX' : 'Aland Islands',
