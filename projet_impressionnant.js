@@ -212,7 +212,7 @@ function formatDuration(seconds) {
 // Rend le résumé plus facilement lisible sans changer les valeurs
 async function readableSummary(hours){
     const summary = await countriesSummary(hours)
-    const dateTimeFormat = new Intl.DateTimeFormat('fr-FR', {
+    const dateTimeFormat = new Intl.DateTimeFormat('en-US', {
         dateStyle: 'medium',
         timeStyle: 'medium'
     })
@@ -226,7 +226,23 @@ async function readableSummary(hours){
     return newSummary
 }
 
+async function queryCountry(summaryReadable, countryName, hours) {
+    const country = R.find(R.propEq(countryName, 'country'), summaryReadable)
+    if(country) {
+        console.log('In the next ' + hours + ' hours, the ISS will enter ' + countryName + ' ' + country['entries'].length +
+            ' times :')
+        for (let time of country['entries']) {
+            console.log(' - ', time)
+        }
+        console.log('for a total flyover time of' + country['flyoverTime'])
+    }
+    else console.log('The ISS will not pass above this country in the next ' + hours + ' hours')
+}
+
 
 
 // On peut remplacer l'heure par le nombre qu'on souhaite
-readableSummary(24).then((result) => console.log(result))
+const hours = 24
+const summary = await readableSummary(hours)
+console.log(summary)
+queryCountry(summary, 'Chile', hours)
