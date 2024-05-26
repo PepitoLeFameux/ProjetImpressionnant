@@ -217,13 +217,15 @@ async function readableSummary(hours){
         timeStyle: 'medium'
     })
 
-    const newSummary = R.map(countryData => ({
-        ...countryData,
-        country: getCountryName(countryData.country),
-        entries: R.map(time => dateTimeFormat.format(new Date(time * 1000)) + ' UTC+2', countryData.entries),
-        flyoverTime: formatDuration(countryData.flyoverTime)
-    }), summary);
-    return newSummary
+    return R.pipe(
+        R.map(countryData => ({
+            ...countryData,
+            country: getCountryName(countryData.country),
+            entries: R.map(time => dateTimeFormat.format(new Date(time * 1000)) + ' UTC+2', countryData.entries),
+            flyoverTime: formatDuration(countryData.flyoverTime)
+        })),
+        R.sortBy(R.prop('country'))
+        )(summary)
 }
 
 async function queryCountry(summaryReadable, countryName, hours) {
@@ -245,4 +247,4 @@ async function queryCountry(summaryReadable, countryName, hours) {
 const hours = 24
 const summary = await readableSummary(hours)
 console.log(summary)
-queryCountry(summary, 'Chile', hours)
+queryCountry(summary, 'France', hours)
